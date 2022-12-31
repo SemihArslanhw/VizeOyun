@@ -14,6 +14,8 @@ public class BossEntering : MonoBehaviour
     public GameObject shield;
     public GameObject Boss;
 
+    public GameObject audioManager;
+
     public Button Qskill;
     public Button Eskill;
     public Button Rskill;
@@ -149,7 +151,8 @@ public class BossEntering : MonoBehaviour
         door.SetActive(true);
         transform.position = new Vector3(player.transform.position.x , player.transform.position.y - 1, transform.position.z);
         Camera.main.orthographicSize = 1.5f;
-            Boss.GetComponent<Boss>().start();
+        Boss.GetComponent<Boss>().start();
+            audioManager.GetComponent<SCAudioManager>().BossMusicStart();
         }
         
     }

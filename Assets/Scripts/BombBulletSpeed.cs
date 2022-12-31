@@ -30,8 +30,9 @@ public class BombBulletSpeed : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.name != "MaceRed")
+        if(collision.collider.name != "MaceRed" )
         {
+            Debug.Log(collision.collider.name);
             this.gameObject.SetActive(false);
         }
         if(collision.collider.name == "Sniper")

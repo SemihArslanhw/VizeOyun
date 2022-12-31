@@ -40,7 +40,7 @@ public class BulletSpeed : MonoBehaviour
         }
         if(collision.collider.name == "MaceRed")
         {
-            Boss.GetComponent<Boss>().DecraseHealth(2);
+            Boss.GetComponent<Boss>().DecraseHealth(50);
         }
     }
 }

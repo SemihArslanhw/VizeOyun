@@ -9,9 +9,11 @@ public class Boss : MonoBehaviour
     public GameObject TheEnd;
     public GameObject BossBullet;
     public GameObject BulletSpawnPoint;
+    public GameObject audioManager;
+    public GameObject Timerr;
     Vector3 positionBullet;
     private float timer = 1f;
-
+    
     private bool isStarted = false;
     
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class Boss : MonoBehaviour
         BossHealth = new HealthSystem(100);
         positionBullet = BulletSpawnPoint.GetComponent<Transform>().position;
         TheEnd.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -58,6 +61,14 @@ public class Boss : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             TheEnd.gameObject.SetActive(true);
+            audioManager.GetComponent<SCAudioManager>().BossKilledMusic();
+            Debug.Log(Timerr.GetComponent<ScoreManager>().currTime());
+            PlayerPrefs.SetInt("score",1000 - (int)Timerr.GetComponent<ScoreManager>().currTime());
+            float topScore = PlayerPrefs.GetInt("topscore");
+            if(topScore < 1000 - (int)Timerr.GetComponent<ScoreManager>().currTime())
+            {
+                PlayerPrefs.SetInt("topscore", 1000 - (int)Timerr.GetComponent<ScoreManager>().currTime());
+            }
         }
     }
 }
